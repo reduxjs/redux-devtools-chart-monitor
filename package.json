@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf lib dist",
     "build": "babel src --out-dir lib",
-    "build:umd": "webpack src/index.js dist/redux-chart-monitor.js && NODE_ENV=production webpack src/index.js dist/redux-chart-monitor.min.js",
+    "build:umd": "webpack src/ChartMonitor.js dist/redux-chart-monitor.js && NODE_ENV=production webpack src/ChartMonitor.js dist/redux-chart-monitor.min.js",
     "lint": "eslint src",
     "prepublish": "npm run lint && npm run clean && npm run build && npm run build:umd"
   },
