@@ -1,6 +1,6 @@
 {
   "name": "redux-chart-monitor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Monitor for Redux dev tools to visualize your store as a chart",
   "main": "lib/ChartMonitor.js",
   "scripts": {
