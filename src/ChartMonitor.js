@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import * as themes from 'redux-devtools/lib/react/themes';
-import visualizer from 'd3-state-visualizer';
+import deepmerge from 'deepmerge';
+import Chart from './Chart';
 
 const styles = {
   container: {
@@ -37,30 +38,14 @@ export default class ChartMonitor extends Component {
 
   static defaultProps = {
     select: (state) => state,
-    monitorState: { isVisible: true },
+    monitorState: {isVisible: true},
     theme: 'nicinabox',
     visibleOnLoad: true
   };
 
-  componentWillReceiveProps() {
-  }
-
-  componentDidUpdate() {
-  }
-
-  componentWillMount() {
-    let visibleOnLoad = this.props.visibleOnLoad;
-    const { monitorState } = this.props;
-    this.props.setMonitorState({
-      ...monitorState,
-      isVisible: visibleOnLoad
-    });
-  }
-
-  render() {
-    const { monitorState, computedStates } = this.props;
-
+  getTheme() {
     let theme;
+
     if (typeof this.props.theme === 'string') {
       if (typeof themes[this.props.theme] !== 'undefined') {
         theme = themes[this.props.theme];
@@ -71,11 +56,14 @@ export default class ChartMonitor extends Component {
     } else {
       theme = this.props.theme;
     }
-    if (!monitorState.isVisible) {
-      return null;
-    }
 
-    const style = {
+    return theme;
+  }
+
+  getChartStyle() {
+    const theme = this.getTheme();
+
+    return {
       width: '100%',
       height: '100%',
       node: {
@@ -93,21 +81,38 @@ export default class ChartMonitor extends Component {
         }
       }
     };
+  }
 
-    const TreeChart = visualizer.components.TreeChart;
+  getChartOptions(props = this.props) {
+    const { computedStates } = props;
+
+    const defaultOptions = {
+      state: computedStates[computedStates.length - 1].state,
+      isSorted: false,
+      heightBetweenNodesCoeff: 1,
+      widthBetweenNodesCoeff: 1.3,
+      tooltipOptions: {disabled: true},
+      style: this.getChartStyle()
+    };
+
+    return deepmerge(defaultOptions, props);
+  }
+
+  componentWillMount() {
+    let visibleOnLoad = this.props.visibleOnLoad;
+    const { monitorState } = this.props;
+    this.props.setMonitorState({
+      ...monitorState,
+      isVisible: visibleOnLoad
+    });
+  }
+
+  render() {
+    const theme = this.getTheme();
 
     return (
       <div style={{...styles.container, backgroundColor: theme.base00}}>
-        <TreeChart
-          state={computedStates[computedStates.length - 1].state}
-          id='todosState'
-          aspectRatio={0.5}
-          isSorted={false}
-          heightBetweenNodesCoeff={1}
-          widthBetweenNodesCoeff={1.3}
-          tooltipOptions={{ offset: {left: 30, top: 10}, indentationSize: 2}}
-          style={style}
-          />
+        <Chart {...this.getChartOptions()} />
       </div>
     );
   }
