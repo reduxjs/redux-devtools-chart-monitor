@@ -2,7 +2,7 @@ import 'babel-core/polyfill';
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import ChartMonitor from 'redux-chart-monitor';
+import ChartMonitor from 'redux-devtools-chart-monitor';
 import { DevTools, DebugPanel } from 'redux-devtools/lib/react';
 import App from './containers/App';
 import configureStore from './store/configureStore';

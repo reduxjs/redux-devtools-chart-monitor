@@ -18,7 +18,7 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      'redux-chart-monitor': path.join(__dirname, '..', '..', 'src', 'ChartMonitor.js'),
+      'redux-devtools-chart-monitor': path.join(__dirname, '..', '..', 'src', 'ChartMonitor.js'),
       'react': path.join(__dirname, 'node_modules', 'react')
     },
     extensions: ['', '.js']

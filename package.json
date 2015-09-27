@@ -1,18 +1,18 @@
 {
-  "name": "redux-chart-monitor",
+  "name": "redux-devtools-chart-monitor",
   "version": "0.1.0",
   "description": "Monitor for Redux dev tools to visualize your store as a chart",
   "main": "lib/ChartMonitor.js",
   "scripts": {
     "clean": "rimraf lib dist",
     "build": "babel src --out-dir lib",
-    "build:umd": "webpack src/ChartMonitor.js dist/redux-chart-monitor.js && NODE_ENV=production webpack src/ChartMonitor.js dist/redux-chart-monitor.min.js",
+    "build:umd": "webpack src/ChartMonitor.js dist/redux-devtools-chart-monitor.js && NODE_ENV=production webpack src/ChartMonitor.js dist/redux-devtools-chart-monitor.min.js",
     "lint": "eslint src examples",
     "prepublish": "npm run lint && npm run clean && npm run build && npm run build:umd"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/romseguy/redux-chart-monitor.git"
+    "url": "https://github.com/romseguy/redux-devtools-chart-monitor.git"
   },
   "keywords": [
     "redux",
@@ -22,9 +22,9 @@
   "author": "romseguy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/romseguy/redux-chart-monitor/issues"
+    "url": "https://github.com/romseguy/redux-devtools-chart-monitor/issues"
   },
-  "homepage": "https://github.com/romseguy/redux-chart-monitor",
+  "homepage": "https://github.com/romseguy/redux-devtools-chart-monitor",
   "devDependencies": {
     "babel": "^5.5.8",
     "babel-core": "^5.6.18",

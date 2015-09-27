@@ -1,2 +1,2 @@
-redux-chart-monitor
+redux-devtools-chart-monitor
 =========================

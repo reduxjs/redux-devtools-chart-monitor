@@ -29,7 +29,7 @@ module.exports = {
     }]
   },
   output: {
-    library: 'redux-chart-monitor',
+    library: 'redux-devtools-chart-monitor',
     libraryTarget: 'umd'
   },
   plugins: plugins,
