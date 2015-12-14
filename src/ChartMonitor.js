@@ -1,7 +1,12 @@
 import React, { PropTypes, Component } from 'react';
-import * as themes from 'redux-devtools/lib/react/themes';
+import shouldPureComponentUpdate from 'react-pure-render/function';
+import * as themes from 'redux-devtools-themes';
+import { ActionCreators } from 'redux-devtools';
 import deepmerge from 'deepmerge';
+
+import reducer from './reducers';
 import Chart from './Chart';
+const { reset, rollback, commit, sweep, toggleAction } = ActionCreators;
 
 const styles = {
   container: {
@@ -14,50 +19,76 @@ const styles = {
   }
 };
 
-export default class ChartMonitor extends Component {
-  constructor(props) {
-    super(props);
-  }
+class ChartMonitor extends Component {
+  static reducer = reducer;
 
   static propTypes = {
-    computedStates: PropTypes.array.isRequired,
-    currentStateIndex: PropTypes.number.isRequired,
-    monitorState: PropTypes.object.isRequired,
-    stagedActions: PropTypes.array.isRequired,
-    skippedActions: PropTypes.object.isRequired,
-    reset: PropTypes.func.isRequired,
-    commit: PropTypes.func.isRequired,
-    rollback: PropTypes.func.isRequired,
-    sweep: PropTypes.func.isRequired,
-    toggleAction: PropTypes.func.isRequired,
-    jumpToState: PropTypes.func.isRequired,
-    setMonitorState: PropTypes.func.isRequired,
+    dispatch: PropTypes.func,
+    computedStates: PropTypes.array,
+    actionsById: PropTypes.object,
+    stagedActionIds: PropTypes.array,
+    skippedActionIds: PropTypes.array,
+    monitorState: PropTypes.shape({
+      initialScrollTop: PropTypes.number
+    }),
+
+    preserveScrollTop: PropTypes.bool,
     select: PropTypes.func.isRequired,
-    visibleOnLoad: PropTypes.bool
+    theme: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string
+    ])
   };
 
   static defaultProps = {
     select: (state) => state,
-    monitorState: {isVisible: true},
     theme: 'nicinabox',
-    visibleOnLoad: true
+    preserveScrollTop: true
   };
 
-  getTheme() {
-    let theme;
+  shouldComponentUpdate = shouldPureComponentUpdate;
 
-    if (typeof this.props.theme === 'string') {
-      if (typeof themes[this.props.theme] !== 'undefined') {
-        theme = themes[this.props.theme];
-      } else {
-        console.warn('DevTools theme ' + this.props.theme + ' not found, defaulting to nicinabox');
-        theme = themes.nicinabox;
-      }
-    } else {
-      theme = this.props.theme;
+  constructor(props) {
+    super(props);
+    this.handleToggleAction = this.handleToggleAction.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+    this.handleRollback = this.handleRollback.bind(this);
+    this.handleSweep = this.handleSweep.bind(this);
+    this.handleCommit = this.handleCommit.bind(this);
+  }
+
+  handleRollback() {
+    this.props.dispatch(rollback());
+  }
+
+  handleSweep() {
+    this.props.dispatch(sweep());
+  }
+
+  handleCommit() {
+    this.props.dispatch(commit());
+  }
+
+  handleToggleAction(id) {
+    this.props.dispatch(toggleAction(id));
+  }
+
+  handleReset() {
+    this.props.dispatch(reset());
+  }
+
+  getTheme() {
+    let { theme } = this.props;
+    if (typeof theme !== 'string') {
+      return theme;
     }
 
-    return theme;
+    if (typeof themes[theme] !== 'undefined') {
+      return themes[theme];
+    }
+
+    console.warn('DevTools theme ' + theme + ' not found, defaulting to nicinabox');
+    return themes.nicinabox;
   }
 
   getChartStyle() {
@@ -98,15 +129,6 @@ export default class ChartMonitor extends Component {
     return deepmerge(defaultOptions, props);
   }
 
-  componentWillMount() {
-    let visibleOnLoad = this.props.visibleOnLoad;
-    const { monitorState } = this.props;
-    this.props.setMonitorState({
-      ...monitorState,
-      isVisible: visibleOnLoad
-    });
-  }
-
   render() {
     const theme = this.getTheme();
 
@@ -117,3 +139,5 @@ export default class ChartMonitor extends Component {
     );
   }
 }
+
+export default ChartMonitor;
