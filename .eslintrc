@@ -2,7 +2,7 @@
   "extends": "eslint-config-airbnb",
   "env": {
     "browser": true,
-    "mocha": true,
+    "mocha": false,
     "node": true
   },
   "rules": {

@@ -1,11 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import visualizer from 'd3-state-visualizer';
 
-export default class Chart extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+class Chart extends Component {
   static propTypes = {
     state: PropTypes.object,
     rootKeyName: React.PropTypes.string,
@@ -33,6 +29,10 @@ export default class Chart extends Component {
     })
   };
 
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     this.renderChart = visualizer.charts.tree(React.findDOMNode(this), this.props);
     this.renderChart();
@@ -47,3 +47,5 @@ export default class Chart extends Component {
     return <div/>;
   }
 }
+
+export default Chart;
