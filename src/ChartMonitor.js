@@ -20,7 +20,7 @@ const styles = {
 };
 
 class ChartMonitor extends Component {
-  static reducer = reducer;
+  static update = reducer;
 
   static propTypes = {
     dispatch: PropTypes.func,
@@ -133,7 +133,7 @@ class ChartMonitor extends Component {
     const theme = this.getTheme();
 
     return (
-      <div style={{...styles.container, backgroundColor: theme.base00}}>
+      <div style={{...styles.container, backgroundColor: theme.base07}}>
         <Chart {...this.getChartOptions()} />
       </div>
     );

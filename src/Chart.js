@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import { findDOMNode } from 'react-dom';
 import visualizer from 'd3-state-visualizer';
 
 class Chart extends Component {
@@ -34,7 +35,7 @@ class Chart extends Component {
   }
 
   componentDidMount() {
-    this.renderChart = visualizer.charts.tree(React.findDOMNode(this), this.props);
+    this.renderChart = visualizer.charts.tree(findDOMNode(this), this.props);
     this.renderChart();
   }
 
