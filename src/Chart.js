@@ -43,13 +43,14 @@ class Chart extends Component {
   }
 
   componentDidMount() {
+    const { select, state } = this.props;
     this.renderChart = visualizer.charts.tree(findDOMNode(this), this.props);
-    this.renderChart();
+    this.renderChart(select(state));
   }
 
   componentWillReceiveProps(nextProps) {
-    const { state } = nextProps;
-    this.renderChart(state);
+    const { state, select } = nextProps;
+    this.renderChart(select(state));
   }
 
   render() {
