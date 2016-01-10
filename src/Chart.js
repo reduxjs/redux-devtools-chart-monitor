@@ -5,8 +5,8 @@ import visualizer from 'd3-state-visualizer';
 class Chart extends Component {
   static propTypes = {
     state: PropTypes.object,
-    rootKeyName: React.PropTypes.string,
-    pushMethod: React.PropTypes.string,
+    rootKeyName: PropTypes.string,
+    pushMethod: PropTypes.string,
     tree: PropTypes.shape({
       name: PropTypes.string,
       children: PropTypes.array
@@ -15,18 +15,21 @@ class Chart extends Component {
     style: PropTypes.object,
     size: PropTypes.number,
     aspectRatio: PropTypes.number,
-    isSorted: React.PropTypes.bool,
-    heightBetweenNodesCoeff: React.PropTypes.number,
-    widthBetweenNodesCoeff: React.PropTypes.number,
-    transitionDuration: React.PropTypes.number,
+    isSorted: PropTypes.bool,
+    heightBetweenNodesCoeff: PropTypes.number,
+    widthBetweenNodesCoeff: PropTypes.number,
+    transitionDuration: PropTypes.number,
+    onClickText: PropTypes.func,
     tooltipOptions: PropTypes.shape({
+      disabled: PropTypes.bool,
       left: PropTypes.number,
       top: PropTypes.number,
       offset: PropTypes.shape({
         left: PropTypes.number,
         top: PropTypes.number
       }),
-      indentationSize: PropTypes.number
+      indentationSize: PropTypes.number,
+      style: PropTypes.object
     })
   };
 
