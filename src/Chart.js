@@ -2,6 +2,11 @@ import React, { PropTypes, Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import visualizer from 'd3-state-visualizer';
 
+const wrapperStyle = {
+  width: '100%',
+  height: '100%'
+};
+
 class Chart extends Component {
   static propTypes = {
     state: PropTypes.object,
@@ -48,7 +53,7 @@ class Chart extends Component {
   }
 
   render() {
-    return <div/>;
+    return <div style={wrapperStyle}/>;
   }
 }
 
