@@ -39,6 +39,64 @@ Consult the [`DockMonitor` README](https://github.com/gaearon/redux-devtools-doc
 
 ### Props
 
+#### ChartMonitor props
+
+```
+  static propTypes = {
+    state: PropTypes.object,
+    rootKeyName: PropTypes.string,
+    pushMethod: PropTypes.string,
+    tree: PropTypes.shape({
+      name: PropTypes.string,
+      children: PropTypes.array
+    }),
+    id: PropTypes.string,
+    style: PropTypes.shape({
+      node: PropTypes.shape({
+        colors: proptypes.shape({
+          'default': PropTypes.string,
+          parent: PropTypes.string,
+          collapsed: PropTypes.string
+        }),
+        radius: PropTypes.number
+      }),
+      text: PropTypes.shape({
+        colors: PropTypes.shape({
+          'default': PropTypes.string,
+          hover: PropTypes.string
+        })
+      }),
+      link: PropTypes.object
+    }),
+    size: PropTypes.number,
+    aspectRatio: PropTypes.number,
+    margin: PropTypes.shape({
+      top: PropTypes.number,
+      right: PropTypes.number,
+      bottom: PropTypes.number,
+      left: PropTypes.number
+    }),
+    isSorted: PropTypes.bool,
+    heightBetweenNodesCoeff: PropTypes.number,
+    widthBetweenNodesCoeff: PropTypes.number,
+    transitionDuration: PropTypes.number,
+    onClickText: PropTypes.func,
+    tooltipOptions: PropTypes.shape({
+      disabled: PropTypes.bool,
+      left: PropTypes.number,
+      top: PropTypes.number,
+      offset: PropTypes.shape({
+        left: PropTypes.number,
+        top: PropTypes.number
+      }),
+      indentationSize: PropTypes.number,
+      style: PropTypes.object
+    })
+  };
+```
+
+#### Redux DevTools props
+
 Name                  | Description
 -------------         | -------------
 `theme`               | Either a string referring to one of the themes provided by [redux-devtools-themes](https://github.com/gaearon/redux-devtools-themes) (feel free to contribute!) or a custom object of the same format. Optional. By default, set to [`'nicinabox'`](https://github.com/gaearon/redux-devtools-themes/blob/master/src/nicinabox.js).

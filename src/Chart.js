@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { findDOMNode } from 'react-dom';
-import visualizer from 'd3-state-visualizer';
+import { tree } from 'd3-state-visualizer';
 
 const wrapperStyle = {
   width: '100%',
@@ -11,15 +11,37 @@ class Chart extends Component {
   static propTypes = {
     state: PropTypes.object,
     rootKeyName: PropTypes.string,
-    pushMethod: PropTypes.string,
+    pushMethod: PropTypes.oneOf(['push', 'unshift']),
     tree: PropTypes.shape({
       name: PropTypes.string,
       children: PropTypes.array
     }),
     id: PropTypes.string,
-    style: PropTypes.object,
+    style: PropTypes.shape({
+      node: PropTypes.shape({
+        colors: PropTypes.shape({
+          'default': PropTypes.string,
+          parent: PropTypes.string,
+          collapsed: PropTypes.string
+        }),
+        radius: PropTypes.number
+      }),
+      text: PropTypes.shape({
+        colors: PropTypes.shape({
+          'default': PropTypes.string,
+          hover: PropTypes.string
+        })
+      }),
+      link: PropTypes.object
+    }),
     size: PropTypes.number,
     aspectRatio: PropTypes.number,
+    margin: PropTypes.shape({
+      top: PropTypes.number,
+      right: PropTypes.number,
+      bottom: PropTypes.number,
+      left: PropTypes.number
+    }),
     isSorted: PropTypes.bool,
     heightBetweenNodesCoeff: PropTypes.number,
     widthBetweenNodesCoeff: PropTypes.number,
@@ -44,7 +66,7 @@ class Chart extends Component {
 
   componentDidMount() {
     const { select, state } = this.props;
-    this.renderChart = visualizer.charts.tree(findDOMNode(this), this.props);
+    this.renderChart = tree(findDOMNode(this), this.props);
     this.renderChart(select(state));
   }
 
