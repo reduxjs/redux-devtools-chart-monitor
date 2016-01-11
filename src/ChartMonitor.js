@@ -117,12 +117,24 @@ class ChartMonitor extends Component {
   getChartOptions(props = this.props) {
     const { computedStates } = props;
 
+    const tooltipOptions = {
+      disabled: false,
+      offset: {left: 30, top: 10},
+      indentationSize: 2,
+      style: {
+        'background-color': 'lightgrey',
+        'opacity': '0.7',
+        'border-radius': '5px',
+        'padding': '5px'
+      }
+    };
+
     const defaultOptions = {
       state: computedStates[computedStates.length - 1].state,
       isSorted: false,
       heightBetweenNodesCoeff: 1,
       widthBetweenNodesCoeff: 1.3,
-      tooltipOptions: {disabled: true},
+      tooltipOptions,
       style: this.getChartStyle()
     };
 
