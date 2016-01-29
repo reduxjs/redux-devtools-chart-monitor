@@ -6,6 +6,8 @@ It shows a real-time view of the store aka the current state of the app.
 
 [Demo](http://romseguy.github.io/redux-store-visualizer/) [(Source)](https://github.com/romseguy/redux-store-visualizer)
 
+![Chart Monitor](https://camo.githubusercontent.com/19aebaeba929e97f97225115c49dc994299cb76e/687474703a2f2f692e696d6775722e636f6d2f4d53677655366c2e676966)
+
 ### Installation
 
 ```
