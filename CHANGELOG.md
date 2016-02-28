@@ -1,4 +1,4 @@
-# Change log
+# Change Log
 
-All notable changes to this project will be documented in this file.
-This project adheres to [Semantic Versioning](http://semver.org/).
+This project adheres to [Semantic Versioning](http://semver.org/).  
+Important releases are documented on the Github [Releases](https://github.com/reactjs/redux/releases) page.
