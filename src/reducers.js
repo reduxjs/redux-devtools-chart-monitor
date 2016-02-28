@@ -1,13 +1,11 @@
-import { SOME_ACTION } from './actions';
+import { TOGGLE_VISIBILITY } from './actions';
 
-function someAction(props, state = {}, action) {
-  return action.type === SOME_ACTION ?
-    action.data :
-    state;
+function toggleVisibility(props, state = false, action) {
+  return action.type === TOGGLE_VISIBILITY ? !state : state
 }
 
 export default function reducer(props, state = {}, action) {
   return {
-    someState: someAction(props, state.someAction, action)
+    isVisible: toggleVisibility(props, state.isVisible, action)
   };
 }

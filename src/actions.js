@@ -1,4 +1,1 @@
-export const SOME_ACTION = '@@redux-devtools-chart-monitor/SOME_ACTION';
-export function someAction(data) {
-  return { type: SOME_ACTION, data };
-}
+export const TOGGLE_VISIBILITY = '@@redux-devtools-log-monitor/TOGGLE_VISIBILITY';

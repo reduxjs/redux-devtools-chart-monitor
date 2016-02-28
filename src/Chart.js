@@ -65,14 +65,19 @@ class Chart extends Component {
   }
 
   componentDidMount() {
-    const { select, state } = this.props;
+    const { select, state, defaultIsVisible } = this.props;
     this.renderChart = tree(findDOMNode(this), this.props);
-    this.renderChart(select(state));
+    if (defaultIsVisible) {
+      this.renderChart(select(state));
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    const { state, select } = nextProps;
-    this.renderChart(select(state));
+    const { state, select, monitorState } = nextProps;
+
+    if (monitorState.isVisible) {
+      this.renderChart(select(state));
+    }
   }
 
   render() {
