@@ -1,6 +1,6 @@
 import { TOGGLE_VISIBILITY } from './actions';
 
-function toggleVisibility(props, state = false, action) {
+function toggleVisibility(props, state = props.defaultIsVisible, action) {
   return action.type === TOGGLE_VISIBILITY ? !state : state
 }
 
