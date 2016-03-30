@@ -116,13 +116,14 @@ class ChartMonitor extends Component {
 
   getChartOptions(props = this.props) {
     const { computedStates } = props;
+    const theme = this.getTheme();
 
     const tooltipOptions = {
       disabled: false,
       offset: {left: 30, top: 10},
       indentationSize: 2,
       style: {
-        'background-color': 'lightgrey',
+        'background-color': theme.base06,
         'opacity': '0.7',
         'border-radius': '5px',
         'padding': '5px'
