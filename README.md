@@ -43,7 +43,7 @@ Consult the [`DockMonitor` README](https://github.com/gaearon/redux-devtools-doc
 
 #### ChartMonitor props
 
-You can read the React component [propTypes](https://github.com/romseguy/redux-devtools-chart-monitor/blob/master/src/ChartMonitor.js#L25) in addition to the details below:
+You can read the React component [propTypes](https://github.com/romseguy/redux-devtools-chart-monitor/blob/master/src/Chart.js#L11) in addition to the details below:
 
 Name                  | Description
 -------------         | -------------
