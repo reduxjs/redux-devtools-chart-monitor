@@ -43,59 +43,20 @@ Consult the [`DockMonitor` README](https://github.com/gaearon/redux-devtools-doc
 
 #### ChartMonitor props
 
-```
-  static propTypes = {
-    state: PropTypes.object,
-    rootKeyName: PropTypes.string,
-    pushMethod: PropTypes.string,
-    tree: PropTypes.shape({
-      name: PropTypes.string,
-      children: PropTypes.array
-    }),
-    id: PropTypes.string,
-    style: PropTypes.shape({
-      node: PropTypes.shape({
-        colors: proptypes.shape({
-          'default': PropTypes.string,
-          parent: PropTypes.string,
-          collapsed: PropTypes.string
-        }),
-        radius: PropTypes.number
-      }),
-      text: PropTypes.shape({
-        colors: PropTypes.shape({
-          'default': PropTypes.string,
-          hover: PropTypes.string
-        })
-      }),
-      link: PropTypes.object
-    }),
-    size: PropTypes.number,
-    aspectRatio: PropTypes.number,
-    margin: PropTypes.shape({
-      top: PropTypes.number,
-      right: PropTypes.number,
-      bottom: PropTypes.number,
-      left: PropTypes.number
-    }),
-    isSorted: PropTypes.bool,
-    heightBetweenNodesCoeff: PropTypes.number,
-    widthBetweenNodesCoeff: PropTypes.number,
-    transitionDuration: PropTypes.number,
-    onClickText: PropTypes.func,
-    tooltipOptions: PropTypes.shape({
-      disabled: PropTypes.bool,
-      left: PropTypes.number,
-      top: PropTypes.number,
-      offset: PropTypes.shape({
-        left: PropTypes.number,
-        top: PropTypes.number
-      }),
-      indentationSize: PropTypes.number,
-      style: PropTypes.object
-    })
-  };
-```
+You can read the React component [propTypes](https://github.com/romseguy/redux-devtools-chart-monitor/blob/master/src/ChartMonitor.js#L25) in addition to the details below:
+
+Name                  | Description
+-------------         | -------------
+`defaultIsVisible`    | By default, set to `true`.
+`transitionDuration`  | By default, set to `750`, in milliseconds.
+`heightBetweenNodesCoeff` | By default, set to `1`.
+`widthBetweenNodesCoeff` | By default, set to `1.3`.
+`isSorted` | By default, set to `false`.
+`style` | {<br>&nbsp;&nbsp;width: '100%', height: '100%', // i.e fullscreen for [`DockMonitor`](https://github.com/gaearon/redux-devtools-dock-monitor)<br>&nbsp;&nbsp;text: {<br>&nbsp;&nbsp;&nbsp;&nbsp;colors: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'default': `theme.base0D`,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hover: `theme.base06`<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;},<br>&nbsp;&nbsp;node: {<br>&nbsp;&nbsp;&nbsp;&nbsp;colors: {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'default': `theme.base0B`,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;collapsed: `theme.base0B`,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent: `theme.base0E`<br>&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;&nbsp;radius: 7<br>&nbsp;&nbsp;}<br>}
+`onClickText` | Function called with a reference to the clicked node as first argument when clicking on the text next to a node.
+`tooltipOptions`      | {<br>&nbsp;&nbsp;disabled: false,<br>&nbsp;&nbsp;indentationSize: 2,<br>&nbsp;&nbsp;style: {<br>&nbsp;&nbsp;&nbsp;&nbsp;'background-color': `theme.base06`,<br>&nbsp;&nbsp;&nbsp;&nbsp;'opacity': '0.7',<br>&nbsp;&nbsp;&nbsp;&nbsp;'border-radius': '5px',<br>&nbsp;&nbsp;&nbsp;&nbsp;'padding': '5px'<br>&nbsp;&nbsp;}<br>}<br>[More info](https://github.com/romseguy/d3tooltip#api).
+
+
 
 #### Redux DevTools props
 
