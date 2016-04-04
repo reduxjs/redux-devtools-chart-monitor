@@ -131,7 +131,7 @@ class ChartMonitor extends Component {
     };
 
     const defaultOptions = {
-      state: computedStates[computedStates.length - 1].state,
+      state: computedStates.length ? computedStates[computedStates.length - 1].state : null,
       isSorted: false,
       heightBetweenNodesCoeff: 1,
       widthBetweenNodesCoeff: 1.3,
