@@ -71,7 +71,7 @@ class Chart extends Component {
   componentWillReceiveProps(nextProps) {
     const { state, select, monitorState } = nextProps;
 
-    if (monitorState.isVisible) {
+    if (monitorState.isVisible !== false) {
       this.renderChart(select(state));
     }
   }
