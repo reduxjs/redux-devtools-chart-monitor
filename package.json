@@ -46,7 +46,7 @@
     "redux-devtools": "^3.0.0"
   },
   "dependencies": {
-    "d3-state-visualizer": "^1.1.1",
+    "d3-state-visualizer": "^1.2.0",
     "deepmerge": "^0.2.10",
     "react-pure-render": "^1.0.2",
     "redux-devtools-themes": "^1.0.0"
