@@ -39,6 +39,7 @@ class ChartMonitor extends Component {
   static propTypes = {
     dispatch: PropTypes.func,
     computedStates: PropTypes.array,
+    currentStateIndex: PropTypes.number,
     actionsById: PropTypes.object,
     stagedActionIds: PropTypes.array,
     skippedActionIds: PropTypes.array,
@@ -147,7 +148,7 @@ class ChartMonitor extends Component {
     };
 
     const defaultOptions = {
-      state: computedStates.length ? computedStates[computedStates.length - 1].state : null,
+      state: computedStates.length ? computedStates[props.currentStateIndex].state : null,
       isSorted: false,
       heightBetweenNodesCoeff: 1,
       widthBetweenNodesCoeff: 1.3,
