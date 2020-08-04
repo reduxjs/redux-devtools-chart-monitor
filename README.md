@@ -1,6 +1,8 @@
 Redux DevTools Chart Monitor
 =========================
 
+**This package was merged into [`redux-devtools`](https://github.com/reduxjs/redux-devtools) monorepo. Please refer to that repository for the latest updates, issues and pull requests.**
+
 A chart monitor for [Redux DevTools](https://github.com/gaearon/redux-devtools).  
 It shows a real-time view of the store aka the current state of the app.
 
